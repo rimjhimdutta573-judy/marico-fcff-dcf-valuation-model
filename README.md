@@ -1,30 +1,41 @@
 # Marico FCFF DCF Valuation Model
 
-An Excel FCFF / DCF valuation model for Marico Limited, built from embedded historical financials and explicit forecast, WACC and terminal-value assumptions.
+An Excel FCFF / DCF valuation model for Marico Limited. The model links three historical years (FY23A-FY25A) to three forecast years (FY26E-FY28E), then converts operating assumptions into free cash flow and enterprise value.
 
-## Open the model
+## What this project demonstrates
 
-Open [Marico_FCFF_DCF_Valuation_Model.xlsx](workbook/Marico_FCFF_DCF_Valuation_Model.xlsx) in desktop Excel. Read in this order:
+- Historical financial-statement integration, forecast building and working-capital modelling.
+- A formula-driven flow from revenue to EBITDA, EBIT, NOPAT, capital expenditure, change in operating net working capital and FCFF.
+- CAPM cost of equity, after-tax cost of debt and market-value capital weights to calculate WACC.
+- Terminal-value calculation and a 5 x 5 WACC-versus-terminal-growth enterprise-value sensitivity table.
+- Mechanical audit checks for formula links, historical tie-outs, FCFF reconciliation and valuation logic.
 
-1. `Assumptions` — forecast drivers.
-2. `Forecast` and `FCFF` — operating build and free cash flow.
-3. `WACC_DCF` — discount rate, enterprise value and sensitivity table.
-4. `Audit` — mechanical checks.
+## Review the model in one minute
 
-## What was improved
+Open [Marico_FCFF_DCF_Valuation_Model.xlsx](workbook/Marico_FCFF_DCF_Valuation_Model.xlsx) in desktop Excel, then follow this path:
 
-- Embedded the historical-financials data so the model has no external workbook link.
-- Activated the forecast assumptions: forecast margins, tax, capex and working-capital drivers now feed the model.
-- Corrected after-tax cost of debt to `pre-tax debt cost × (1 − tax rate)`.
-- Replaced a manual WACC plug with a formula-driven capital-structure calculation; the override is intentionally blank and labelled sensitivity-only.
-- Re-sourced the valuation-date market inputs and corrected FY25 other current assets to INR 413 crore from the FY25 annual report.
-- Added audit checks and removed local-path/user metadata.
+1. **`Assumptions`** - forecast growth, margins, tax, capex and operating-working-capital drivers.
+2. **`Forecast`** and **`FCFF`** - trace the operating build to free cash flow.
+3. **`WACC_DCF`** - review CAPM, capital weights, terminal value and the 5 x 5 sensitivity table.
+4. **`Audit`** - inspect the ten mechanical checks.
+5. **`Historical_Data`** and **`Source_Notes`** - inspect the embedded inputs and source trail.
 
-## Important outputs
+## Base case and key limitation
 
-At the model's 31 March 2025 valuation date, the formula-driven WACC is **10.53%** and enterprise value is **INR 24,361.6 crore**. Terminal value contributes approximately **82.8%** of enterprise value; this makes the result materially sensitive to WACC and terminal-growth assumptions.
+At the model's 31 March 2025 valuation date, the base-case WACC is **10.53%** and enterprise value is **INR 24,361.6 crore**. Terminal value contributes approximately **82.8%** of enterprise value. That concentration makes the conclusion particularly sensitive to WACC and terminal-growth assumptions, which is why the sensitivity table should accompany any discussion of the output.
 
-This model is for educational / portfolio purposes only. It is not investment advice, and it does not state an equity value or target price.
+Forecast assumptions are model inputs, not company guidance. This is an educational portfolio model, not investment advice; it does not present an equity value or target price.
+
+## Model integrity
+
+| Control | Result |
+| --- | --- |
+| Historical period | FY23A-FY25A, embedded in the workbook |
+| Forecast period | FY26E-FY28E |
+| WACC | Formula-driven; base-case override is blank |
+| Sensitivity table | Complete 5 x 5 WACC / terminal-growth grid |
+| Audit checks | 10 / 10 PASS |
+| External workbook links and VBA/macros | None |
 
 ## Sources
 
@@ -32,4 +43,4 @@ This model is for educational / portfolio purposes only. It is not investment ad
 - [Damodaran's India 2025 valuation note](https://pages.stern.nyu.edu/~adamodar/pdfiles/country/val2dayIndia2025.pdf)
 - [Damodaran's 2025 country-risk-premium methodology](https://pages.stern.nyu.edu/~adamodar/pdfiles/blog/DataUpdate5for2025.pdf)
 
-See the [assumptions and audit note](documentation/ASSUMPTIONS_AND_AUDIT.md) for the complete evidence trail and model logic.
+See the [assumptions and audit note](documentation/ASSUMPTIONS_AND_AUDIT.md) for the evidence trail, formulas and methodology.
